@@ -1,0 +1,113 @@
+<!--
+  Booking calendar drop-in. Replace the existing <section class="contact-form-wrap">
+  in contact.html with this block.
+  Requires: backend-api module (POSTs to /api/bookings).
+-->
+<section class="booking-calendar" id="book">
+  <div class="booking-calendar-inner">
+
+    <div class="booking-steps-bar" id="bookingStepsBar">
+      <div class="booking-step-pill is-active" data-step="1"><span class="step-num-circle">1</span><span>Service</span></div>
+      <div class="booking-step-pill" data-step="2"><span class="step-num-circle">2</span><span>Date &amp; time</span></div>
+      <div class="booking-step-pill" data-step="3"><span class="step-num-circle">3</span><span>Details</span></div>
+      <div class="booking-step-pill" data-step="4"><span class="step-num-circle">4</span><span>Confirm</span></div>
+    </div>
+
+    <!-- Step 1: Service -->
+    <div class="booking-step-panel is-active" data-step="1">
+      <h2 class="booking-step-heading">Choose a <em>service</em>.</h2>
+      <p class="booking-step-sub">[1-2 sentences explaining the options or pricing model.]</p>
+      <div class="service-options" id="serviceOptions"><!-- rendered by JS --></div>
+      <div class="booking-step-actions">
+        <span></span>
+        <button class="booking-next-btn" id="serviceNext" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Date + time -->
+    <div class="booking-step-panel" data-step="2">
+      <h2 class="booking-step-heading">Pick a <em>date and time</em>.</h2>
+      <p class="booking-step-sub">[1 sentence on availability or booking lead time.]</p>
+      <div class="calendar-wrap">
+        <div class="calendar">
+          <div class="calendar-header">
+            <div class="calendar-month" id="calendarMonth"></div>
+            <div class="calendar-nav">
+              <button class="calendar-nav-btn" id="calPrev" aria-label="Previous month">‹</button>
+              <button class="calendar-nav-btn" id="calNext" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="calendar-key">
+            <div class="calendar-key-item"><span class="calendar-key-swatch swatch-available"></span>Available</div>
+            <div class="calendar-key-item"><span class="calendar-key-swatch swatch-selected"></span>Selected</div>
+            <div class="calendar-key-item"><span class="calendar-key-swatch swatch-closed"></span>Closed</div>
+          </div>
+        </div>
+        <div class="timeslots-panel">
+          <div class="timeslots-header">
+            <div class="timeslots-day-name" id="timeslotsDayName">Pick a date</div>
+            <div class="timeslots-day-meta" id="timeslotsDayMeta">Available times will appear here</div>
+          </div>
+          <div class="timeslots-grid" id="timeslotsGrid"></div>
+          <div class="timeslots-empty" id="timeslotsEmpty">Select a date on the left to see available times.</div>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="booking-back-link" data-back-to="1">← Back</button>
+        <button class="booking-next-btn" id="dateTimeNext" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Details -->
+    <div class="booking-step-panel" data-step="3">
+      <h2 class="booking-step-heading">Your <em>details</em>.</h2>
+      <p class="booking-step-sub">We'll send a confirmation by email.</p>
+      <div class="booking-details-grid">
+        <div class="booking-summary">
+          <div class="booking-summary-title">Your booking</div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Service</span><span class="booking-summary-value" id="sumService">—</span></div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Date</span><span class="booking-summary-value" id="sumDate">—</span></div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Time</span><span class="booking-summary-value" id="sumTime">—</span></div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Duration</span><span class="booking-summary-value" id="sumDuration">—</span></div>
+        </div>
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="field-row">
+            <div class="field-group"><label class="field-label" for="bk_first">First name</label><input class="field-input" id="bk_first" name="firstName" required></div>
+            <div class="field-group"><label class="field-label" for="bk_last">Last name</label><input class="field-input" id="bk_last" name="lastName" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field-group"><label class="field-label" for="bk_email">Email</label><input class="field-input" id="bk_email" name="email" type="email" required></div>
+            <div class="field-group"><label class="field-label" for="bk_phone">Phone</label><input class="field-input" id="bk_phone" name="phone" type="tel"></div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="bk_notes">Anything we should know?</label>
+            <textarea class="field-textarea" id="bk_notes" name="notes" rows="3" placeholder="Optional"></textarea>
+          </div>
+          <div class="booking-step-actions">
+            <button type="button" class="booking-back-link" data-back-to="2">← Back</button>
+            <button type="submit" class="booking-submit">Confirm booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Step 4: Confirmation -->
+    <div class="booking-step-panel" data-step="4">
+      <div class="booking-confirm">
+        <div class="booking-confirm-tick">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3>Booking <em>confirmed</em>.</h3>
+        <p>Thanks — we've sent a confirmation to <strong id="confirmEmail">your email</strong>. We'll be in touch if anything changes.</p>
+        <div class="booking-confirm-summary">
+          <div class="booking-summary-row"><span class="booking-summary-label">Service</span><span class="booking-summary-value" id="confService">—</span></div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Date</span><span class="booking-summary-value" id="confDate">—</span></div>
+          <div class="booking-summary-row"><span class="booking-summary-label">Time</span><span class="booking-summary-value" id="confTime">—</span></div>
+        </div>
+        <button type="button" class="booking-secondary" id="bookAnother">Book another</button>
+      </div>
+    </div>
+
+  </div>
+</section>

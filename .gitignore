@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local env / secrets
+.env
+.env.local
+*.pem
+
+# Build artefacts (none expected — this is a static template)
+node_modules/
+dist/
+.cache/

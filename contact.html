@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — [Brand Name]</title>
+<meta name="description" content="[~155-char description: how to get in touch, hours, location.]">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<a class="mtmn-back" href="https://mtmn.ie/" aria-label="Back to MTMN Digital">
+  <span class="mtmn-back-arrow">←</span>
+  <span class="mtmn-back-dot" aria-hidden="true"></span>
+  <span>MTMN</span>
+</a>
+
+<nav id="mainNav">
+  <div class="nav-brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:14px">
+      <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1" opacity=".7"/>
+        <line x1="18" y1="4" x2="18" y2="32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-brand-text">
+        <div class="nav-brand-name">[Brand Name]</div>
+        <div class="nav-brand-sub">[Location · Country]</div>
+      </div>
+    </a>
+  </div>
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#book">[CTA Label]</a>
+</nav>
+
+<button class="nav-mobile-trigger" id="navMobileTrigger" aria-expanded="false" aria-controls="navMobilePanel">
+  <span>Menu</span>
+  <svg class="nav-mobile-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="nav-mobile-panel" id="navMobilePanel">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="page-header-eyebrow">Contact</div>
+      <h1>Get in<br><em>touch.</em></h1>
+    </div>
+    <p class="page-header-sub">[2-3 sentences — preferred contact methods, response time, qualifier on who you serve.]</p>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-form-wrap" id="book">
+  <div class="contact-form-inner">
+    <form class="booking-form" id="contactForm" novalidate>
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="firstName">First name</label>
+          <input class="field-input" id="firstName" name="firstName" type="text" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="lastName">Last name</label>
+          <input class="field-input" id="lastName" name="lastName" type="text" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="email">Email</label>
+          <input class="field-input" id="email" name="email" type="email" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="phone">Phone</label>
+          <input class="field-input" id="phone" name="phone" type="tel">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="topic">Reason for contact</label>
+        <select class="field-select" id="topic" name="topic">
+          <option value="">Choose one…</option>
+          <option>[Option 1]</option>
+          <option>[Option 2]</option>
+          <option>[Option 3]</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="notes">Message</label>
+        <textarea class="field-textarea" id="notes" name="notes" rows="4" placeholder="[Helpful prompt for what to include]"></textarea>
+      </div>
+      <button class="form-submit" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<!-- BOOKING CTA — quick contact details -->
+<section class="booking-cta">
+  <div class="booking-cta-inner">
+    <div class="booking-cta-left">
+      <div class="booking-cta-label">Find us</div>
+      <h2 class="booking-cta-heading">Visit our<br><em>practice.</em></h2>
+      <p class="booking-cta-sub">[Address line, town, county. One sentence on parking, accessibility, or directions if relevant.]</p>
+      <div class="booking-cta-actions">
+        <a class="btn-book-main" href="https://maps.google.com/" target="_blank" rel="noopener">View on map</a>
+        <a class="btn-book-call" href="tel:+3530XXXXXXXX">(0XX) XXX XXX</a>
+      </div>
+    </div>
+    <div class="booking-cta-right">
+      <div class="hours-block">
+        <div class="hours-title">Opening Hours</div>
+        <div class="hours-row"><span>Monday – Friday</span><span>9:00 – 17:30</span></div>
+        <div class="hours-row"><span>Saturday</span><span>10:00 – 14:00</span></div>
+        <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+      </div>
+      <div>
+        <div class="hours-title">By email</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.7">
+          <a href="mailto:hello@example.ie" style="color:var(--accent-glow)">hello@example.ie</a><br>
+          We aim to reply within one working day.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mark">
+    <div class="footer-mark-logo">
+      <svg viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="#D8D8D8" stroke-width="1" opacity=".7"/>
+        <line x1="18" y1="4" x2="18" y2="32" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="footer-mark-tagline">[Footer tagline · Since YYYY]</div>
+  </div>
+  <div class="footer-top">
+    <div class="footer-panel">
+      <div class="footer-panel-label">The Practice</div>
+      <p>[1-2 sentences distilling the brand's character.]</p>
+    </div>
+    <div class="footer-panel">
+      <div class="footer-panel-label">Contact</div>
+      <div class="footer-contact-item"><span class="footer-contact-val">[Street]</span></div>
+      <div class="footer-contact-item"><span class="footer-contact-val">[Town, County]</span></div>
+      <div class="footer-contact-item" style="margin-top:14px"><a class="footer-contact-val" href="tel:+3530XXXXXXXX">(0XX) XXX XXX</a></div>
+      <div class="footer-contact-item"><a class="footer-contact-val" href="mailto:hello@example.ie">hello@example.ie</a></div>
+    </div>
+    <div class="footer-panel">
+      <div class="footer-panel-label">Services</div>
+      <div class="footer-services-list">
+        <a href="services.html">[Service 1]</a>
+        <a href="services.html">[Service 2]</a>
+        <a href="services.html">[Service 3]</a>
+        <a href="services.html">[Service 4]</a>
+      </div>
+    </div>
+    <div class="footer-panel">
+      <div class="footer-panel-label">[Panel label]</div>
+      <div class="footer-services-list">
+        <a href="contact.html#book">Book online</a>
+        <a href="contact.html">Get in touch</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© [Brand Name] · 2026</span>
+    <div class="footer-accreds">
+      <span class="footer-accred">[Accred 1]</span>
+      <span class="footer-accred">[Accred 2]</span>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+3530XXXXXXXX" class="mobile-call-fab" aria-label="Call us">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+  Call us
+</a>
+
+<script src="shared.js"></script>
+</body>
+</html>

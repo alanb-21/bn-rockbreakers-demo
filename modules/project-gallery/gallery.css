@@ -1,0 +1,21 @@
+/* =====================================================================
+   PROJECT GALLERY — append to shared.css
+   ===================================================================== */
+.gallery-section{background:var(--bg)}
+.gallery-head{margin-bottom:40px}
+.gallery-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.filter-btn{padding:9px 18px;background:transparent;border:1px solid var(--rule-strong);border-radius:999px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);cursor:pointer;transition:all .3s var(--ease-out);font-weight:500}
+.filter-btn:hover{border-color:var(--accent);color:var(--ink)}
+.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-card{background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule);box-shadow:var(--shadow);transition:all .5s var(--ease-out)}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent-light)}
+.gallery-card.hidden{display:none}
+.gallery-img{aspect-ratio:4/3;overflow:hidden;background:var(--surface-warm)}
+.gallery-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
+.gallery-card:hover .gallery-img img{transform:scale(1.05)}
+.gallery-meta{padding:20px 22px}
+.gallery-meta h3{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.gallery-meta-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+@media(max-width:1100px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.gallery-grid{grid-template-columns:1fr}}

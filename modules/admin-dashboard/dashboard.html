@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard — [Brand Name]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dash-body">
+
+  <header class="dash-topbar">
+    <div class="dash-brand">
+      <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1" opacity=".7"/>
+        <line x1="18" y1="4" x2="18" y2="32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span>[Brand] admin</span>
+    </div>
+    <div class="dash-userbar">
+      <span class="dash-user-email" id="userEmail"></span>
+      <button class="btn-ghost" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <div class="dash-shell">
+    <nav class="dash-tabs">
+      <button class="dash-tab is-active" data-tab="bookings"><span>Bookings</span><span class="dash-tab-count" id="cntBookings">0</span></button>
+      <button class="dash-tab" data-tab="messages"><span>Messages</span><span class="dash-tab-count" id="cntMessages">0</span></button>
+      <button class="dash-tab" data-tab="users"><span>Staff</span><span class="dash-tab-count" id="cntUsers">0</span></button>
+    </nav>
+
+    <main class="dash-main">
+      <!-- Bookings -->
+      <section class="dash-panel is-active" data-panel="bookings">
+        <header class="dash-panel-head">
+          <h2>Bookings</h2>
+          <div class="dash-filters">
+            <select id="bkStatusFilter" class="dash-select">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </header>
+        <div class="dash-list" id="bkList"></div>
+        <aside class="dash-detail" id="bkDetail" hidden></aside>
+      </section>
+
+      <!-- Messages -->
+      <section class="dash-panel" data-panel="messages">
+        <header class="dash-panel-head"><h2>Contact messages</h2></header>
+        <div class="dash-list" id="msgList"></div>
+        <aside class="dash-detail" id="msgDetail" hidden></aside>
+      </section>
+
+      <!-- Users -->
+      <section class="dash-panel" data-panel="users">
+        <header class="dash-panel-head">
+          <h2>Staff</h2>
+          <button class="btn-primary" id="newUserBtn">Add staff</button>
+        </header>
+        <div class="dash-list" id="userList"></div>
+        <aside class="dash-detail" id="userDetail" hidden></aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="dash-toast" id="toast" hidden></div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

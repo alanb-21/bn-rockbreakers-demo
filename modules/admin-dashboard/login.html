@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin login — [Brand Name]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <div class="login-mark">
+      <svg width="44" height="44" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1" opacity=".7"/>
+        <line x1="18" y1="4" x2="18" y2="32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 class="login-title">[Brand] admin</h1>
+    <p class="login-sub">Sign in to manage bookings, messages and staff.</p>
+
+    <form id="loginForm" class="login-form" novalidate>
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+      </div>
+      <div class="field-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="login-error" id="loginError" hidden></div>
+      <button type="submit" class="btn-primary">Sign in</button>
+    </form>
+  </main>
+
+<script>
+(function() {
+  const form = document.getElementById('loginForm');
+  const err = document.getElementById('loginError');
+
+  // Already signed in? Hop to dashboard.
+  if (sessionStorage.getItem('mtmnToken')) {
+    window.location.href = 'dashboard.html';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    const fd = new FormData(form);
+    try {
+      const r = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: fd.get('email'),
+          password: fd.get('password'),
+        }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'sign-in failed');
+      sessionStorage.setItem('mtmnToken', data.token);
+      sessionStorage.setItem('mtmnUser', JSON.stringify(data.user));
+      window.location.href = 'dashboard.html';
+    } catch (e) {
+      err.textContent = e.message || 'Sign-in failed';
+      err.hidden = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
